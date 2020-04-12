@@ -10,7 +10,7 @@ resource "null_resource" "cloud_init_config_files" {
   provisioner "file" {
     content      = templatefile("${path.module}/files/user_data.cfg", {
                         pubkey   = file(var.ssh_key_path)
-                        hostname = "${var.resource_prefix}${count.index+1}"
+                        hostname = "${var.name}${count.index+1}"
                         domain     = var.domain_name
                     })
     destination = "/var/lib/vz/snippets/user_data_${var.name}-${count.index}.yml"
