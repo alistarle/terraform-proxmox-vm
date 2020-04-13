@@ -46,6 +46,12 @@ variable "image" {
     default = "centos"
 }
 
+variable "agent" {
+    type = number
+    default = 1
+}
+
+
 variable pve_user {
     default = "root"
 }

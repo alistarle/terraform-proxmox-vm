@@ -24,6 +24,7 @@ resource "proxmox_vm_qemu" "vm" {
   ]
   name = "${var.name}${count.index+1}.${var.domain_name}"
   target_node = var.target_node
+  agent = var.agent
   clone = var.image
   cores = var.cores
   sockets = 1
