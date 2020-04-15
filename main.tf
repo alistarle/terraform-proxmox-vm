@@ -22,7 +22,7 @@ resource "proxmox_vm_qemu" "vm" {
   depends_on = [
     null_resource.cloud_init_config_files,
   ]
-  name = "${var.name}${count.index+1}.${var.domain_name}"
+  name = "${var.name}${count.index+1}"
   target_node = var.target_node
   agent = var.agent
   clone = var.image
