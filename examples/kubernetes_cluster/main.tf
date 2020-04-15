@@ -5,16 +5,27 @@ provider "proxmox" {
     pm_tls_insecure = true
 }
 
-variable "pve_password" {}
+variable "pve_password" {
+
+}
+
 
 module "vms" {
   source  = "app.terraform.io/alykraft/vm/proxmox"
   version = "0.0.4"
 
-  name = "centos"
+  name = "kubernetes"
   pve_host = "192.168.1.200"
+  cores = 4
+  memory_gb = 8
+  disks = [
+    {
+        type = "ssd"
+        size = 50
+    }
+  ]
   pve_password = var.pve_password
-  vm_count = 1
+  vm_count = 3
 }
 
 output "vm_names" {
